@@ -1,3 +1,7 @@
+output "management_group_policy_assignments_id" {
+  description = "Map of id values across all management_group_policy_assignments, keyed the same as var.management_group_policy_assignments"
+  value       = { for k, v in azurerm_management_group_policy_assignment.management_group_policy_assignments : k => v.id }
+}
 output "management_group_policy_assignments_description" {
   description = "Map of description values across all management_group_policy_assignments, keyed the same as var.management_group_policy_assignments"
   value       = { for k, v in azurerm_management_group_policy_assignment.management_group_policy_assignments : k => v.description }

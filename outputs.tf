@@ -16,7 +16,7 @@ output "management_group_policy_assignments_enforce" {
 }
 output "management_group_policy_assignments_identity" {
   description = "Map of identity values across all management_group_policy_assignments, keyed the same as var.management_group_policy_assignments"
-  value       = { for k, v in azurerm_management_group_policy_assignment.management_group_policy_assignments : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_management_group_policy_assignment.management_group_policy_assignments : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "management_group_policy_assignments_location" {
   description = "Map of location values across all management_group_policy_assignments, keyed the same as var.management_group_policy_assignments"
